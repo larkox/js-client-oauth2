@@ -638,9 +638,10 @@ CodeFlow.prototype.getToken = function (uri, opts) {
   // Reference: https://tools.ietf.org/html/rfc6749#section-3.2.1
   if (options.clientSecret) {
     headers.Authorization = auth(options.clientId, options.clientSecret)
-  } else {
-    body.client_id = options.clientId
   }
+
+  body.client_id = options.clientId
+  body.client_secret = options.clientSecret
 
   return this.client._request(requestOptions({
     url: options.accessTokenUri,
